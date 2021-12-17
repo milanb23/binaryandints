@@ -1,1 +1,122 @@
 #content??
+def int_to_bin(num: int) -> str:
+    onetwoeight(num)
+    starting_point = where_to_start()
+
+    if starting_point == 7:
+        print(Code[7])
+    elif starting_point < 7:
+        print(*Code[starting_point:8])
+
+# All of these functions load up the list at the top so that I can get the correct numbers
+def onetwoeight(x:int)-> int:
+    num = x
+    if num >= 128:
+        Code.append(1)
+        num = num - 128
+        sixfour(num)
+    elif num < 128:
+        Code.append(0)
+        sixfour(num)
+def sixfour(x:int)-> int:
+    num = x
+    if num >= 64:
+        Code.append(1)
+        num = num - 64
+        threetwo(num)
+    elif num < 64:
+        Code.append(0)
+        threetwo(num)
+def threetwo(x:int)-> int:
+    num = x
+    if num >= 32:
+        Code.append(1)
+        num = num - 32
+        onesix(num)
+    elif num < 32:
+        Code.append(0)
+        onesix(num)
+def onesix(x:int)-> int:
+    num = x
+    if num >= 16:
+        Code.append(1)
+        num = num - 16
+        eight(num)
+    elif num < 16:
+        Code.append(0)
+        eight(num)
+def eight(x:int)-> int:
+    num = x
+    if num >= 8:
+        Code.append(1)
+        four(num)
+        num = num - 8
+    elif num < 8:
+        Code.append(0)
+        four(num)
+def four(x:int)-> int:
+    num = x
+    if num >= 4:
+        Code.append(1)
+        num = num - 4
+        two(num)
+    elif num < 4:
+        Code.append(0)
+        two(num)
+def two(x:int)-> int:
+    num = x
+    if num >= 2:
+        Code.append(1)
+        num = num - 2
+        one(num)
+    elif num < 2:
+        Code.append(0)
+        one(num)
+def one(x:int)-> int:
+    num = x
+    if num >= 1:
+        Code.append(1)
+    elif num < 1:
+        Code.append(0)
+
+
+def where_to_start()->int:
+    # handles if the extra zeros at the beginning not printing.
+    if Code[0] == 1:
+        starting_point = 0
+        return starting_point
+    elif Code[0] == 0 and Code[1] == 1:
+        starting_point = 1
+        return starting_point
+    elif Code[1] == 0 and Code[2] == 1:
+        starting_point = 2
+        return starting_point
+    elif Code[2]==0 and Code[3]==1:
+        starting_point = 3
+        return starting_point
+    elif Code[3] == 0 and Code[4] == 1:
+        starting_point = 4
+        return starting_point
+    elif Code[4] == 0 and Code[5] == 1:
+        starting_point = 5
+        return starting_point
+    elif Code[5]==0 and Code[6]==1:
+        starting_point = 6
+        return starting_point
+    elif Code[6]==0 and Code[7]==1:
+        starting_point = 7
+        return starting_point
+
+
+# main function
+def main()->str:
+    print("Would you like to convert to Binary or Intergers?")
+    pick = input("Enter B for Binary and I for Intergers: ")
+    if pick == "B" or pick == "b":
+        num = int(input("Enter what number you want to convert: "))
+        int_to_bin(num)
+    elif pick == "I" or pick == "i":
+        num_two = input("Enter what binary you want to convert: ")
+        bin_to_int(num_two)
+    Code.clear()
+    print("Job Well Done! :)")
